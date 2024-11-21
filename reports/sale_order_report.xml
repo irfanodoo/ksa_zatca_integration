@@ -238,7 +238,7 @@
 
                             <th class="second_table" colspan="2" style="text-align:left;color:white;">
                                 <span>
-                                    <b>Seller:</b>
+                                    <b>Company CR:</b>
                                 </span>
                             </th>
                             <th class="second_table" colspan="1" style="text-align:right;color:white;">
@@ -246,7 +246,7 @@
                             </th>
                             <th class="second_table" colspan="2" style="text-align:left;color:white;">
                                 <span>
-                                    <b>Buyer:</b>
+                                    <b>Buyer CR:</b>
                                 </span>
                             </th>
                             <th class="second_table" colspan="1" style="text-align:right;color:white;">
