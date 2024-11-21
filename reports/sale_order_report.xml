@@ -749,13 +749,13 @@
 <!--                                        &lt;!&ndash;<span t-esc="line.price_unit - total_tax_amount_inc"/>&ndash;&gt;-->
 <!--                                    </td>-->
                                     <td class="second_table" style="text-align:right;">
-                                        <span t-esc="doc.get_bt_131(line.id)"/>
+                                        <span t-esc="line.price_unit"/>
                                     </td>
                                     <td class="second_table" style="text-align:right;">
                                         <span t-esc="'{:,}'.format(line.quantity)"/>
                                     </td>
                                     <td class="second_table" style="text-align:right;">
-                                        <span t-esc="doc.get_bt_136(line.id)"/>
+                                        <span t-esc="line.discount"/>
 <!--                                        <t t-set="discount_price" t-value="line.discount"/>-->
 <!--                                        <span t-esc="'{:,}'.format(discount_price)"/>-->
 <!--                                        <t t-set="tot_discount" t-value="tot_discount+discount_price"/>-->
@@ -782,13 +782,15 @@
 <!--                                           t-value="round(float(taxalbe_amt)*(total_tax_percent/100),2)"/>-->
 <!--                                        &lt;!&ndash;                                        <t t-esc="'{:,}'.format(total_tax_amount)"/>&ndash;&gt;-->
 <!--                                        <span t-esc="round(doc.currency_id.compute(total_tax_amount, doc.invoice_multi_currency_id),2)"/>-->
-                                        <span t-esc="doc.get_ksa_11(line.id)"/>
+<t t-if="line.tax_ids">
+    <span t-esc="line.price_unit * (line.tax_ids[0].amount / 100)"/>
+</t>
                                     </td>
                                     <td class="second_table" style="text-align:right;">
 <!--                                        <span t-esc="round(doc.currency_id.compute(line.price_total, doc.invoice_multi_currency_id),2)"-->
 <!--                                              />-->
                                         <!--                                        <t t-esc="'{:,}'.format(line.price_total)"/>-->
-                                        <span t-esc="doc.get_ksa_12(line.id)"/>
+                                        <span t-esc="line.price_subtotal"/>
                                     </td>
                                 </tr>
                             </t>
