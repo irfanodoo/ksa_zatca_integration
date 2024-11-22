@@ -10,23 +10,23 @@
         <t t-set="company" t-value="res_company"/>
     	</t>
 
-                		<div class="header">
+		<div class="header">
 	    	<table style="border:1pt solid grey;width:100%;font-size:12px; margin-top:-10px;" width="100%">
 	    		<link rel="stylesheet" href="/e_tax_invoice_saudi_aio/static/src/css/style.css"/>
 	            <tr>
 	                <td colspan="2" width="35%">
 	                	<strong><span style="padding-left:5px;" t-field="company.name"/></strong><br/>
-	                	<t t-if="company.arabic_street">
-	                		<span style="padding-left:5px;" t-field="company.arabic_street"/><br/>
+	                	<t t-if="company.street">
+	                		<span style="padding-left:5px;" t-field="company.street"/><br/>
 	                	</t>
-	                	<t t-if="company.arabic_street2">
-	                		<span style="padding-left:5px;" t-field="company.arabic_street2"/><br/>
+	                	<t t-if="company.street2">
+	                		<span style="padding-left:5px;" t-field="company.street2"/><br/>
 	                	</t>
-	                	<t t-if="company.arabic_city">
-	                		<span style="padding-left:5px;" t-field="company.arabic_city"/><br/>
+	                	<t t-if="company.city">
+	                		<span style="padding-left:5px;" t-field="company.city"/><br/>
 	                	</t>
-	                	<t t-if="company.arabic_country">
-	                		<span style="padding-left:5px;" t-field="company.arabic_country"/><br/>
+	                	<t t-if="company.country_id">
+	                		<span style="padding-left:5px;" t-field="company.country_id.name"/><br/>
 	                	</t>
 	                </td>
 	                <br/>
@@ -34,18 +34,18 @@
 
 	                <td colspan="2" width="35%" class="text-right">
 	                	<strong>
-	                		<span class="text-right arabic" style="padding-right:5px;" t-field="company.arabic"/></strong><br/>
-	                	<t t-if="company.street">
-	                		<span class="text-right arabic" style="padding-right:5px;" t-field="company.street"/><br/>
+	                		<span class="text-right arabic" style="padding-right:5px;" t-field="company.arabic_name"/></strong><br/>
+	                	<t t-if="company.arabic_street">
+	                		<span class="text-right arabic" style="padding-right:5px;" t-field="company.arabic_street"/><br/>
 	                	</t>
-	                	<t t-if="company.street2">
-	                		<span class="text-right arabic" style="padding-right:5px;" t-field="company.street2"/><br/>
+	                	<t t-if="company.arabic_street2">
+	                		<span class="text-right arabic" style="padding-right:5px;" t-field="company.arabic_street2"/><br/>
 	                	</t>
-	                	<t t-if="company.city">
-	                		<span class="text-right arabic" style="padding-right:5px;" t-field="company.city"/><br/>
+	                	<t t-if="company.arabic_city">
+	                		<span class="text-right arabic" style="padding-right:5px;" t-field="company.arabic_city"/><br/>
 	                	</t>
-	                	<t t-if="company.country_id.name">
-	                		<span class="text-right arabic" style="padding-right:5px;" t-field="company.country_id.name"/><br/>
+	                	<t t-if="company.arabic_country">
+	                		<span class="text-right arabic" style="padding-right:5px;" t-field="company.arabic_country"/><br/>
 	                	</t>
 	                </td>
 	            </tr>
@@ -725,19 +725,20 @@
                                         <span class="lable_bold"></span>
                                         <span class="lable_bold">(SAR)</span>
                                     </th>
-                                    <th align="right" name="item_subtotal" class="second_table"
+
+                                    <th align="center" name="quantity" class="second_table"
+                                        style="background-color:#4f4d4d;text-align:center;color:white;">
+                                        <span class="lable_bold">Quantity</span>
+                                        <br/>
+                                        <span class="lable_bold">الكمية</span>
+                                    </th>
+                                     <th align="right" name="item_subtotal" class="second_table"
                                         style="background-color:#4f4d4d;text-align:center;color:white;">
                                         <span class="lable_bold">Unit</span>
                                         <br/>
                                         <span class="lable_bold"></span>
                                         <br></br>
                                         <span class="lable_bold"> وحدة</span>
-                                    </th>
-                                    <th align="center" name="quantity" class="second_table"
-                                        style="background-color:#4f4d4d;text-align:center;color:white;">
-                                        <span class="lable_bold">Quantity</span>
-                                        <br/>
-                                        <span class="lable_bold">الكمية</span>
                                     </th>
                                     <th align="center" name="discount" class="second_table"
                                         style="background-color:#4f4d4d;text-align:center;color:white;">
@@ -823,11 +824,12 @@
 <!--                                    </td>-->
                                     <td class="second_table" style="text-align:right;">
                                         <span t-esc="line.price_unit"/>
-                                    </td><td class="second_table" style="text-align:right;">
-                                        <span t-esc="line.product_uom_id.name"/>
-                                    </td>
+
                                     <td class="second_table" style="text-align:right;">
                                         <span t-esc="'{:,}'.format(line.quantity)"/>
+                                    </td>
+                                    </td><td class="second_table" style="text-align:right;">
+                                        <span t-esc="line.product_uom_id.name"/>
                                     </td>
                                     <td class="second_table" style="text-align:right;">
                                         <span t-esc="line.discount"/>
